@@ -43,3 +43,31 @@ A Modular Monolith is one deployable application organized into logically indepe
 - Deployment complexity
 
 **Implementation Status:** Architecture decision accepted; implementation pending.
+
+---
+
+## Q2. Why did you use FastAPI APIRouter?
+
+**Answer:**
+
+I used FastAPI's `APIRouter` to organize API endpoints into separate modules based on their responsibilities.
+
+For example, the health-check endpoint is implemented in `api/health.py`, while the main application is configured in `main.py`.
+
+The main application registers the router using `app.include_router()`.
+
+This approach provides separation of concerns, improves maintainability, and allows new API modules to be added without making the main application file unnecessarily large.
+
+---
+
+## Q3. Why did you choose the src/ layout in your Python project?
+
+**Answer:**
+
+I chose the `src/` layout to separate application code from project-level files such as configuration, documentation, tests, and dependency management.
+
+My application package is located at `src/ecommerce_ops/`.
+
+I configured Hatchling as the build backend and used `uv` to install the package.
+
+This approach establishes a clear package boundary and helps ensure that the application is imported as an installed package rather than accidentally relying on the project root being on Python's import path.
